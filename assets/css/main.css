@@ -4,21 +4,23 @@
     --primary: #1e1e1e;
     --secondary: #3e3e3e;
     --accent: #ededed;
+    --white: #ffffff;
     /* parti */
-    --rodt: #e90302;
-    --arbeiderpartiet: #d70926;
-    --sosialistisk-venstreparti: #539760;
-    --senterpartiet: #00843d;
-    --miljopartiet-de-gronne: #597d22;
-    --kristelig-folkeparti: #db4f43;
-    --venstre: #006666;
-    --hoyre: #0065f1;
-    --fremskrittspartiet: #004F80;
+    --r: #e90302;
+    --ap: #d70926;
+    --sv: #539760;
+    --sp: #00843d;
+    --mdg: #597d22;
+    --krf: #db4f43;
+    --v: #006666;
+    --h: #0065f1;
+    --frp: #004F80;
 }
 
 html, body {
     /* sizing */
-    margin: 2em 2em;
+    margin: 0;
+    height: 100%;
     /* color */
     background: var(--background);
     /* text */
@@ -64,18 +66,18 @@ html, body {
     transition: transform ease 0.2s, box-shadow ease 0.2s, opacity ease 0.2s;
 }
 
-.button:hover:not(.inactive) {
+.button:hover:not(:disabled) {
     cursor: pointer;
     /* animation */
     transform: translateY(-1.5px);
     box-shadow: 0 10px 40px -10px var(--primary);
 }
 
-.button.inactive {
+.button:disabled {
     opacity: 80%;
 }
 
-.button.inactive:hover {
+.button:disabled:hover {
     cursor:not-allowed;
     opacity: 70%;
 }
@@ -115,12 +117,22 @@ html, body {
     height: 2em;
 }
 
+.main-container {
+    /* position */
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .container-vote {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 1vw;
     grid-row-gap: 2vh;
+    margin: 0 0 5vh 0;
 }
 
 .vote-card {
@@ -129,11 +141,11 @@ html, body {
     width: 15vw;
     height: 6vh;
     /* position */
-    display: inline-flex;
+    display: flex;
     align-items: center;
     overflow: hidden;
     /* color */
-    background: #fff;
+    background: var(--white);
     /* text */
     font-size: 1.125rem;
     /* border */
@@ -163,7 +175,7 @@ html, body {
 }
 
 .vote-card#card-r:hover {
-    background: var(--rodt);
+    background: var(--r);
 }
 
 .vote-card#card-sv {
@@ -171,7 +183,7 @@ html, body {
 }
 
 .vote-card#card-sv:hover {
-    background: var(--sosialistisk-venstreparti);
+    background: var(--sv);
 }
 
 .vote-card#card-sp {
@@ -179,7 +191,7 @@ html, body {
 }
 
 .vote-card#card-sp:hover {
-    background: var(--senterpartiet);
+    background: var(--sp);
 }
 
 .vote-card#card-ap {
@@ -187,7 +199,7 @@ html, body {
 }
 
 .vote-card#card-ap:hover {
-    background: var(--arbeiderpartiet);
+    background: var(--ap);
 }
 
 .vote-card#card-mdg {
@@ -195,7 +207,7 @@ html, body {
 }
 
 .vote-card#card-mdg:hover {
-    background: var(--miljopartiet-de-gronne);
+    background: var(--mdg);
 }
 
 .vote-card#card-krf {
@@ -203,7 +215,7 @@ html, body {
 }
 
 .vote-card#card-krf:hover {
-    background: var(--kristelig-folkeparti);
+    background: var(--krf);
 }
 
 .vote-card#card-v {
@@ -211,7 +223,7 @@ html, body {
 }
 
 .vote-card#card-v:hover {
-    background: var(--venstre);
+    background: var(--v);
 }
 
 .vote-card#card-h {
@@ -219,7 +231,7 @@ html, body {
 }
 
 .vote-card#card-h:hover {
-    background: var(--hoyre);
+    background: var(--h);
 }
 
 .vote-card#card-frp {
@@ -227,5 +239,5 @@ html, body {
 }
 
 .vote-card#card-frp:hover {
-    background: var(--fremskrittspartiet);
+    background: var(--frp);
 }

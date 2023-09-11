@@ -25,5 +25,9 @@ $('.vote-card').on('click', function () {
 });
 
 $('#vote-button').on('click', function () {
-  alert('Du har stemt ' + selected.trim());
+  window.location.href = './confirmed.html';
+});
+
+$('.redirect-button').on('click', function () {
+  window.location.href = $(this).attr('loc');
 });

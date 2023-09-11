@@ -8,7 +8,7 @@
     /* parti */
     --r: #e90302;
     --ap: #d70926;
-    --sv: #539760;
+    --sv: #EB4040;
     --sp: #00843d;
     --mdg: #597d22;
     --krf: #db4f43;
@@ -43,6 +43,13 @@ html, body {
     font-size: 4.375rem;
 }
 
+.link {
+    /* color */
+    color: inherit;
+    /* animation */
+    text-decoration: none;
+}
+
 .text-gradient {
     /* effect */
     background: linear-gradient(120deg, var(--secondary), var(--accent));
@@ -66,11 +73,27 @@ html, body {
     transition: transform ease 0.2s, box-shadow ease 0.2s, opacity ease 0.2s;
 }
 
-.button:hover:not(:disabled) {
+.button.secondary-button {
+    /* color */
+    background: var(--white);
+    color: var(--text);
+    /* border */
+    border: 2px var(--accent) solid;
+    border-radius: 8px;
+}
+
+.button:hover:not(:disabled):not(.secondary-button) {
     cursor: pointer;
     /* animation */
     transform: translateY(-1.5px);
     box-shadow: 0 10px 40px -10px var(--primary);
+}
+
+.button.secondary-button:hover:not(:disabled) {
+    cursor: pointer;
+    /* animation */
+    transform: translateY(-1.5px);
+    box-shadow: 0 0px 40px -20px var(--primary);
 }
 
 .button:disabled {
@@ -124,6 +147,10 @@ html, body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.container-row {
+    flex-direction: row;
 }
 
 .container-vote {
@@ -187,7 +214,7 @@ html, body {
 }
 
 .vote-card#card-sp {
-    grid-area: 1 / 3 / 2 / 4;
+    grid-area: 2 / 1 / 3 / 2;
 }
 
 .vote-card#card-sp:hover {
@@ -195,7 +222,7 @@ html, body {
 }
 
 .vote-card#card-ap {
-    grid-area: 2 / 1 / 3 / 2;
+    grid-area: 1 / 3 / 2 / 4;
 }
 
 .vote-card#card-ap:hover {

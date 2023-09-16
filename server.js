@@ -3,8 +3,6 @@ const express = require('express');
 const app = express();
 
 app.use(express.static(__dirname + '/public'));
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
-app.use('/chart.js', express.static(__dirname + '/node_modules/chart.js/auto/'));
 
 app.get('/', function (req, res) {
   res.sendFile('/index.html');

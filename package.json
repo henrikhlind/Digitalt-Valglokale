@@ -16,9 +16,6 @@
     "url": "https://github.com/henrikhlind/Digitalt-Valglokale/issues"
   },
   "homepage": "https://github.com/henrikhlind/Digitalt-Valglokale#readme",
-  "devDependencies": {
-    "parcel": "^2.6.2"
-  },
   "dependencies": {
     "chart.js": "^4.4.0",
     "express": "^4.18.2",

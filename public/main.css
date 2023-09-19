@@ -277,3 +277,16 @@ html, body {
 .vote-card#card-frp:hover {
     background: var(--frp);
 }
+
+@media only screen and (max-width: 640px) {
+    .vote-card {
+        display: grid;
+        place-items: center;
+    }
+    .vote-card > .hint {
+        display: none;
+        }
+    .vote-card > .hint-img {
+        width: 9vw;
+    }
+}

@@ -24,12 +24,9 @@ $('.vote-card').on('click', function () {
     $('#vote-button').prop('disabled', false);
     $('#vote-button').css('background', $(this).css('background'));
     $('#vote-button').text('Stem' + $(this).text());
+    $('#vote-button').attr('dbid', $(this).attr('dbid'));
     selected = $(this);
   }
-});
-
-$('#vote-button').on('click', function () {
-  window.location.href = './confirmed.html';
 });
 
 $('.redirect-button').on('click', function () {

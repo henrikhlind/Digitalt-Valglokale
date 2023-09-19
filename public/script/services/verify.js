@@ -9,6 +9,6 @@ $('#name-input').on('keyup', function (e) {
 $('#verify-button').on('click', function () {
   if ($('#name-input').val()) {
     localStorage.setItem('name', $('#name-input').val());
-    window.location = './vote.html';
+    window.location = '/vote';
   }
 });

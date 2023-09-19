@@ -18,6 +18,7 @@
   "homepage": "https://github.com/henrikhlind/Digitalt-Valglokale#readme",
   "dependencies": {
     "chart.js": "^4.4.0",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mssql": "^10.0.1"
   }
 }

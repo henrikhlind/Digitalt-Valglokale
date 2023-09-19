@@ -76,6 +76,6 @@ app.get('/increment-vote/:id', (req, res) => {
   res.send(`Incrementing data for ID: ${id}`);
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('Server has started on port 3000.');
 });

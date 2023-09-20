@@ -64,6 +64,7 @@ function generateChart(data) {
     },
     options: {
       responsive: true,
+      hover: { mode: null },
       animation: {
         duration: 200,
         easing: 'easeInSine',

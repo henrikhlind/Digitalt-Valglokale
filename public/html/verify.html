@@ -6,6 +6,8 @@
     <title>Valglokale</title>
     <!-- jquery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <!-- libphonenumber -->
+    <script src="https://cdn.jsdelivr.net/npm/libphonenumber-js@1.10.44/bundle/libphonenumber-js.min.js"></script>
     <!-- local -->
     <link rel="stylesheet" href="/main.css" />
     <script src="/script/main.js" defer></script>
@@ -13,9 +15,10 @@
   </head>
   <body>
     <div class="main-container" id="verify">
-      <p class="hint">Skriv hele navnet ditt</p>
-      <input type="text" class="input-field" name="Navn" id="name-input" placeholder="Navn" />
-      <button class="button" id="verify-button" disabled>Gå videre</button>
+      <p class="hint">Oppgi telefonnummerret ditt</p>
+      <p class="hint warning">Vennligst skriv inn et norsk telefonnummer, uten landskode</p>
+      <input type="tel" class="input-field" name="Telefonnummer" id="phone-input" placeholder="987 65 432" />
+      <button class="button redirect-button" id="verify-button" loc="/vote" disabled>Gå videre</button>
     </div>
   </body>
 </html>

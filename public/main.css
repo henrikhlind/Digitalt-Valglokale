@@ -5,6 +5,7 @@
     --secondary: #3e3e3e;
     --accent: #ededed;
     --white: #ffffff;
+    --warning: #d4221c;
     /* parti */
     --r: #e90302;
     --sv: #EB4040;
@@ -136,6 +137,12 @@ html, body {
 
 .hint {
     margin: 0.4em 0;
+}
+
+.hint.warning {
+    color: var(--warning);
+    margin: 0;
+    display: none;
 }
 
 .input-radio {

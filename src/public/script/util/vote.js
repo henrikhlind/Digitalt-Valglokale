@@ -29,6 +29,9 @@ $('.vote-card').on('click', function () {
   }
 });
 
-$('.redirect-button').on('click', function () {
-  window.location.href = $(this).attr('loc');
+$('#vote-button').on('click', function () {
+  fetch(`/increment-vote/${$(this).attr('dbid')}`).catch((error) => {
+    console.error(error);
+  });
+  window.location.href = '/confirmed';
 });

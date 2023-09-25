@@ -6,6 +6,8 @@
     --accent: #ededed;
     --white: #ffffff;
     --warning: #d4221c;
+    /* brands */
+    --fb: rgb(44, 99, 245);
     /* parti */
     --r: #e90302;
     --sv: #EB4040;
@@ -86,6 +88,13 @@ html, body {
     border-radius: 8px;
 }
 
+.button.facebook-button {
+    background: var(--fb);
+    /* position */
+    display: inline-flex;
+    align-items: center;
+}
+
 .button:hover:not(:disabled):not(.secondary-button) {
     cursor: pointer;
     /* animation */
@@ -107,6 +116,12 @@ html, body {
 .button:disabled:hover {
     cursor:not-allowed;
     opacity: 70%;
+}
+
+.button > .hint-img {
+    width: 1.5vw;
+    margin: 0 0.75em 0 0;
+    padding: 0;
 }
 
 .input-field {

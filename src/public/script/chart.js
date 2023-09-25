@@ -1,7 +1,6 @@
 fetch('/retrieve-data')
   .then((response) => response.json())
   .then((data) => {
-    // Handle the retrieved data here.
     generateChart(data);
   })
   .catch((error) => {

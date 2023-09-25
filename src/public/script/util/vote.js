@@ -30,8 +30,15 @@ $('.vote-card').on('click', function () {
 });
 
 $('#vote-button').on('click', function () {
-  fetch(`/increment-vote/${$(this).attr('dbid')}`).catch((error) => {
-    console.error(error);
-  });
-  window.location.href = '/confirmed';
+  fetch(`/increment-vote/${$(this).attr('dbid')}`)
+    .then((response) => {
+      if (response.ok) {
+        window.location.href = '/confirmed';
+      } else {
+        console.error('Request failed with status:', response.status);
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 });

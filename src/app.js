@@ -6,6 +6,7 @@ const sql = require(__dirname + '/routes/sql.js');
 
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook');
+const { retrieveData } = require('./routes/sql');
 
 // static assets
 app.use(express.static(__dirname + '/public'));
@@ -42,8 +43,6 @@ passport.use(
         const newUser = {
           id: profile.id,
         };
-
-        console.log(newUser.id);
 
         await sql.addUser(newUser.id);
 
@@ -82,31 +81,50 @@ async function hasVoted(req, res, next) {
   return next();
 }
 
-// routes
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/views/index.html');
-});
-
-app.get('/verify', (req, res) => {
-  res.sendFile(__dirname + '/views/pages/verify.html');
-});
-
-app.get('/results', (req, res) => {
-  res.sendFile(__dirname + '/views/pages/results.html');
-});
-
-app.get('/vote', isAuthenticated, hasVoted, (req, res) => {
-  res.sendFile(__dirname + '/views/pages/vote.html');
-});
-
-app.get('/confirmed', isAuthenticated, (req, res) => {
-  res.sendFile(__dirname + '/views/pages/confirmed.html');
-});
-
 // passport routes
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/vote', failureRedirect: '/verify' }));
+
+// routes
+const routeConfig = [
+  { path: '/', middleware: [], file: '/views/index.html' },
+  { path: '/verify', middleware: [], file: '/views/pages/verify.html' },
+  { path: '/results', middleware: [], file: '/views/pages/results.html' },
+  { path: '/vote', middleware: [isAuthenticated, hasVoted], file: '/views/pages/vote.html' },
+];
+
+routeConfig.forEach((route) => {
+  const { path, middleware, file } = route;
+  const middlewareFunctions = middleware.map((middlewareFunction) => (req, res, next) => {
+    middlewareFunction(req, res, next);
+  });
+
+  app.get(path, ...middlewareFunctions, (req, res) => {
+    res.sendFile(__dirname + file);
+  });
+});
+
+app.get('/confirmed', isAuthenticated, async (req, res) => {
+  try {
+    const hasVoted = await sql.hasVoted(req.session.passport.user);
+    if (hasVoted) {
+      // req.logout((err) => {
+      //   if (err) {
+      //     console.error(err);
+      //     res.status(500).json({ error: 'An error occurred while logging the user out.' });
+      //   } else {
+      res.sendFile(__dirname + '/views/pages/confirmed.html');
+      //   }
+      // });
+    } else {
+      res.redirect('/vote');
+    }
+  } catch (error) {
+    console.error(error);
+    // res.status(500).json({ error: 'An error occurred while checking if the user has voted.' });
+  }
+});
 
 // sql routes
 app.get('/retrieve-data', async (req, res) => {
@@ -121,12 +139,16 @@ app.get('/retrieve-data', async (req, res) => {
 
 app.get('/increment-vote/:id', async (req, res) => {
   const id = req.params.id;
-  try {
-    await sql.incrementVote(id, req.session.passport.user);
-    res.send(`Incrementing data for ID: ${id}`);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while incrementing vote.' });
+  if (req.session.passport) {
+    try {
+      await sql.incrementVote(id, req.session.passport.user);
+      res.send(`Incrementing data for ID: ${id}`);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'An error occurred while incrementing vote.' });
+    }
+  } else {
+    res.redirect('/verify');
   }
 });
 

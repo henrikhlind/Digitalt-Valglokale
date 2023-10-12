@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <!-- chart.js -->
     <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <!-- local -->
     <link rel="stylesheet" href="/main.css" />
     <script src="/script/util/redirect.js" defer></script>
@@ -16,7 +17,14 @@
   <body>
     <div class="main-container" id="vote">
       <h1 class="header">Valgresultater</h1>
-      <div class="result-chart"><canvas id="chart-container"></canvas></div>
+      <div class="chart-container">
+        <div class="bar-container"><canvas id="bar-chart"></canvas></div>
+        <div class="pie-container"><canvas id="pie-chart"></canvas></div>
+      </div>
+      <div class="container-row">
+        <button class="slide-button slide-1 active"></button>
+        <button class="slide-button slide-2"></button>
+      </div>
       <button class="button redirect-button" loc="/">Gå tilbake</button>
     </div>
   </body>

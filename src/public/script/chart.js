@@ -97,6 +97,17 @@ function generatePieChart(data) {
         },
         datalabels: {
           color: '#f0f0f0',
+          formatter: function (value, index, values) {
+            if (value > 0) {
+              value = value.toString();
+              value = value.split(/(?=(?:...)*$)/);
+              value = value.join(',');
+              return value;
+            } else {
+              value = '';
+              return value;
+            }
+          },
         },
       },
     },

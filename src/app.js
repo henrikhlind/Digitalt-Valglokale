@@ -6,7 +6,6 @@ const sql = require(__dirname + '/routes/sql.js');
 
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook');
-const { retrieveData } = require('./routes/sql');
 
 // static assets
 app.use(express.static(__dirname + '/public'));
@@ -29,7 +28,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL:  process.env.FACEBOOK_CALLBOOK_URL,
+      callbackURL: '/auth/facebook/callback',
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -75,6 +74,7 @@ function isAuthenticated(req, res, next) {
 }
 
 async function hasVoted(req, res, next) {
+  console.log(await sql.hasVoted(req.session.passport.user));
   if (await sql.hasVoted(req.session.passport.user)) {
     res.redirect('/confirmed');
   }
@@ -109,20 +109,13 @@ app.get('/confirmed', isAuthenticated, async (req, res) => {
   try {
     const hasVoted = await sql.hasVoted(req.session.passport.user);
     if (hasVoted) {
-      // req.logout((err) => {
-      //   if (err) {
-      //     console.error(err);
-      //     res.status(500).json({ error: 'An error occurred while logging the user out.' });
-      //   } else {
       res.sendFile(__dirname + '/views/pages/confirmed.html');
-      //   }
-      // });
     } else {
       res.redirect('/vote');
     }
   } catch (error) {
     console.error(error);
-    // res.status(500).json({ error: 'An error occurred while checking if the user has voted.' });
+    res.status(500).json({ error: 'An error occurred while checking if the user has voted.' });
   }
 });
 

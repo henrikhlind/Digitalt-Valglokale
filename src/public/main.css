@@ -98,8 +98,7 @@ html, body {
 .slide-button {
     cursor: pointer;
     /* color */
-    background: var(--primary);
-    opacity: 80%;
+    background: var(--secondary);
     /* sizing */
     width: 1vw;
     aspect-ratio: 1 / 1;
@@ -111,7 +110,7 @@ html, body {
 }
 
 .slide-button.active {
-    opacity: 100%;
+    background: var(--primary);
 }
 
 .button:hover:not(:disabled):not(.secondary-button) {
@@ -201,6 +200,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: -3vh;
 }
 
 .bar-container {
@@ -233,18 +233,19 @@ html, body {
 .vote-card {
     /* sizing */
     padding: 0.5em 1.25em;
-    width: 13vw;
-    height: 6vh;
+    width: 16vw;
+    height: 8vh;
     /* position */
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
     /* color */
     background: var(--white);
     /* text */
     font-size: 1.125rem;
     /* border */
-    border: 2px var(--accent) solid;
+    border: 1px var(--accent) solid;
     border-radius: 8px;
     /* animation */
     transition: background ease 0.2s;

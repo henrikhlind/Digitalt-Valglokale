@@ -1,2 +1,1 @@
 # Digitalt-Valglokale
-* basd *

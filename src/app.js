@@ -3,6 +3,7 @@ const session = require('express-session');
 
 const app = express();
 const sql = require(__dirname + '/routes/sql.js');
+require('dotenv').config();
 
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook');
@@ -28,7 +29,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: '/auth/facebook/callback',
+      callbackURL: 'http://localhost:3000/auth/facebook/callback',
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -74,7 +75,6 @@ function isAuthenticated(req, res, next) {
 }
 
 async function hasVoted(req, res, next) {
-  console.log(await sql.hasVoted(req.session.passport.user));
   if (await sql.hasVoted(req.session.passport.user)) {
     res.redirect('/confirmed');
   }

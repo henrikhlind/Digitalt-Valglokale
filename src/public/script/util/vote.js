@@ -31,7 +31,7 @@ $('.vote-card').on('click', function () {
 
 $('#vote-button').on('click', function () {
   $(this).attr('disabled', 'true');
-  $(this).text('Legger inn stemme...');
+  $(this).text('Teller stemme...');
   fetch(`/increment-vote/${$(this).attr('dbid')}`)
     .then((response) => {
       if (response.ok) {

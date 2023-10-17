@@ -233,12 +233,11 @@ html, body {
 .vote-card {
     /* sizing */
     padding: 0.5em 1.25em;
-    width: 16vw;
-    height: 8vh;
+    width: 15vw;
+    height: 6vh;
     /* position */
     display: flex;
     align-items: center;
-    justify-content: center;
     overflow: hidden;
     /* color */
     background: var(--white);

@@ -101,6 +101,7 @@ routeConfig.forEach((route) => {
   });
 
   app.get(path, ...middlewareFunctions, (req, res) => {
+    console.log('\x1b[33m Nå fikk jeg besøk!🤓👆 \x1b[0m');
     res.sendFile(__dirname + file);
   });
 });

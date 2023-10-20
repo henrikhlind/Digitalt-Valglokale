@@ -1,0 +1,5 @@
+{
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/6c867db5-b5c8-46f8-bf1b-e0db3e9b3c41/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/digitalt-valglokale",
+  "appService.deploySubpath": ".",
+  "appService.zipIgnorePattern": ["node_modules{,/**}", ".vscode{,/**}"]
+}

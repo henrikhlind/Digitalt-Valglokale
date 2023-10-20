@@ -50,6 +50,14 @@ function generateBarChart(data) {
       scales: {
         y: {
           beginAtZero: true,
+          grid: {
+            display: true,
+          },
+        },
+        x: {
+          grid: {
+            display: false,
+          },
         },
       },
       plugins: {

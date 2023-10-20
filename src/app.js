@@ -29,7 +29,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: 'http://localhost:3000/auth/facebook/callback',
+      callbackURL: 'https://digitalt-valglokale.azurewebsites.net/auth/facebook/callback',
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -89,6 +89,8 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRe
 // routes
 const routeConfig = [
   { path: '/', middleware: [], file: '/views/index.html' },
+  { path: '/privacy', middleware: [], file: '/views/legal/privacy.html' },
+  { path: '/tos', middleware: [], file: '/views/legal/tos.html' },
   { path: '/verify', middleware: [], file: '/views/pages/verify.html' },
   { path: '/results', middleware: [], file: '/views/pages/results.html' },
   { path: '/vote', middleware: [isAuthenticated, hasVoted], file: '/views/pages/vote.html' },

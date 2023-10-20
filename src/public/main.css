@@ -51,6 +51,9 @@ html, body {
 .link {
     /* color */
     color: inherit;
+    /* font */
+    font-weight: 600;
+    padding: 0.25vw;
     /* animation */
     text-decoration: none;
 }
@@ -192,8 +195,18 @@ html, body {
     flex-direction: column;
 }
 
+.legal {
+    width: 40vw;
+    overflow: scroll;
+}
+
 .container-row {
     flex-direction: row;
+}
+
+.container-row.links {
+    position: absolute;
+    bottom: 5vh;
 }
 
 .chart-container {
